@@ -1,0 +1,136 @@
+// body styling usually stored elsewhere, but shown here to keep as one script
+body {
+	&.body-lock{
+		overflow: hidden;
+	}
+}
+
+// colours usually stored elsewhere, but shown here to keep as one script
+$c_white: #FFFFFF;
+$c_lightbox_bg: rgba(33, 33, 33, 0.8);
+
+.blocks-gallery-item{
+  cursor: pointer;
+}
+
+.blocks-gallery-lightbox{
+  @include transition-in-out;
+  z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: $c_lightbox_bg;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.fade{
+    opacity: 0;
+  }
+
+  .lightbox-close{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: $c_white;
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    font-size: 3rem;
+    line-height: 3rem;
+    cursor: pointer;
+    opacity: .75;
+    @include transition-in-out;
+
+    @media (max-width: 650px){
+      top: 5px;
+      right: 5px;
+    }
+
+    &:hover{
+      opacity: 1;
+    }
+
+    &:focus{
+      outline: none;
+    }
+
+    body.admin-bar &{
+      top: 52px;
+
+      @media (max-width: 782px) {
+        top: 66px;
+      }
+
+      @media (max-width: 650px){
+        top: 51px;
+        right: 5px;
+      }
+    }
+  }
+
+  .lightbox-arrow{
+    position: absolute;
+    display: block;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $c_white;
+    background-color: transparent;
+    border: none;
+    appearance: none;
+    font-size: 2rem;
+    line-height: 2rem;
+    cursor: pointer;
+    opacity: .75;
+    padding: 0;
+    @include transition-in-out;
+
+    @media (max-width: 650px){
+      bottom: 20px;
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      top: auto;
+      transform: none;
+    }
+
+    &:disabled{
+      opacity: 0.25;
+    }
+
+    &:hover:not(:disabled){
+      opacity: 1;
+    }
+
+    &:focus{
+      outline: none;
+    }
+
+    &.lightbox-arrow--prev{
+      left: 20px;
+
+      @media (max-width: 650px){
+        left: 10px;
+      }
+    }
+
+    &.lightbox-arrow--next{
+      right: 20px;
+
+      @media (max-width: 650px){
+        right: 10px;
+      }
+    }
+  }
+
+  img{
+    width: 100%;
+    height: auto;
+    max-width: 80vw;
+
+    @media (max-width: 650px){
+      max-width: calc(100% - 20px);
+    }
+  }
+}

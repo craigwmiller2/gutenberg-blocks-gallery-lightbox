@@ -26,7 +26,9 @@ jQuery(document).ready(function($){
     });
 
     // when gallery item is clicked
-    $('.blocks-gallery-item').click(function(){
+    $('.blocks-gallery-item').click(function(e){
+      
+      e.preventDefault();
 
       // lock body scrolling with class
       $('body').addClass('body-lock');
